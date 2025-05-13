@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Llama Reader Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Llama Reader Assistant</h1>
+      <div class="settings-icon" id="settingsButton">⚙️</div>
+    </header>
+
+    <div class="settings-panel" id="settingsPanel">
+      <h2>Settings</h2>
+      <div class="setting-group">
+        <label for="llamaPath">Path to Llama model:</label>
+        <input type="text" id="llamaPath" placeholder="e.g., C:/llama/models/llama-2-7b-chat.gguf">
+      </div>
+      <div class="setting-group">
+        <label for="contextLength">Context length:</label>
+        <input type="number" id="contextLength" value="2048" min="512" max="8192">
+      </div>
+      <div class="setting-group">
+        <label for="temperature">Temperature:</label>
+        <input type="range" id="temperature" min="0" max="1" step="0.1" value="0.7">
+        <span id="temperatureValue">0.7</span>
+      </div>
+      <button id="saveSettings">Save Settings</button>
+    </div>
+
+    <div class="content-area">
+      <div class="section">
+        <h2>Selected Text</h2>
+        <div class="selected-text" id="selectedText">
+          <p class="placeholder">Select text on the page to analyze it with Llama</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Your Question</h2>
+        <textarea id="userQuery" placeholder="Ask a question about the selected text..."></textarea>
+        <button id="submitQuery" disabled>Ask Llama</button>
+      </div>
+
+      <div class="section">
+        <h2>Llama's Response</h2>
+        <div class="response" id="llamaResponse">
+          <p class="placeholder">Responses will appear here</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-bar" id="statusBar">
+      <span id="statusMessage">Ready</span>
+      <div class="connection-status">
+        <span id="connectionDot"></span>
+        <span id="connectionStatus">Disconnected</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>
